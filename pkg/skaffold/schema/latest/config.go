@@ -82,6 +82,7 @@ type BuildType struct {
 	GoogleCloudBuild    *GoogleCloudBuild    `yaml:"googleCloudBuild,omitempty" yamltags:"oneOf=build"`
 	KanikoBuild         *KanikoBuild         `yaml:"kaniko,omitempty" yamltags:"oneOf=build"`
 	AzureContainerBuild *AzureContainerBuild `yaml:"acr,omitempty" yamltags:"oneOf=build"`
+	IBMContainerBuild   *IBMContainerBuild   `yaml:"icr,omitempty" yamltags:"oneOf=build"`
 }
 
 // LocalBuild contains the fields needed to do a build on the local docker daemon
@@ -131,6 +132,13 @@ type AzureContainerBuild struct {
 	ClientID       string `yaml:"clientId,omitempty"`
 	ClientSecret   string `yaml:"clientSecret,omitempty"`
 	TenantID       string `yaml:"tenantId,omitempty"`
+}
+
+// IBMContainerBuild contains the fields needed to do a build
+// on IBM Cloud Container Registry
+type IBMContainerBuild struct {
+	APIKey        string `yaml:"apiKey,omitempty"`
+	DefaultRegion string `yaml:"defaultRegion,omitempty"`
 }
 
 // TestCase is a struct containing all the specified test
